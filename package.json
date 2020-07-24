@@ -1,0 +1,11 @@
+{
+  "name": "dotnetdatetime",
+  "version": "1.0.0",
+  "description": "Copycat of the .NET DateTime-Object",
+  "main": "index.js",
+  "scripts": {
+    "test": "new DateTime(2008, 5, 1, 8, 30, 52).toString(\"yyyy\") == \"2020\""
+  },
+  "author": "Daniel Marner",
+  "license": "ISC"
+}
