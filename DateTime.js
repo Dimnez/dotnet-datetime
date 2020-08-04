@@ -159,18 +159,18 @@ class DateTime {
 
     toString(format) {
 
-        let seperator = "/";
+        let separator = "/";
         let ret = "";
         let formatgroups = format.split(/[/.:-]+/);
         
-        let seperatorIndex = 0;
+        let separatorIndex = 0;
         for(let i = 0;i<formatgroups.length;i++)
         {
             if(i>0) {
-                ret += seperator;
+                ret += separator;
             }
-            seperator = format.charAt(seperatorIndex + formatgroups[i].length);
-            seperatorIndex += formatgroups[i].length+1;
+            separator = format.charAt(separatorIndex + formatgroups[i].length);
+            separatorIndex += formatgroups[i].length+1;
 
             ret += this.format(formatgroups[i][0], formatgroups[i].length);
         }
