@@ -115,44 +115,44 @@ class DateTime {
 
         if(char == "d")
         {
-            if(seg = 1)
+            if(seg == 1)
                 return this._Day.toString();
-            else if(seg = 2)
+            else if(seg == 2)
                 return str_day;
         }
         else if(char == "M")
         {
-            if(seg = 1)
+            if(seg == 1)
                 return this._Month.toString();
-            else if(seg = 2)
+            else if(seg == 2)
                 return str_month;
         }
         else if(char == "y")
         {
-            if(seg = 2)
+            if(seg == 1)
                 return this._Year.toString();
-            else if(seg = 2)
+            else if(seg == 2)
                 return str_year;
         }
         else if(char == "h")
         {
-            if(seg = 1)
+            if(seg == 1)
                 return this._Hour.toString();
-            else if(seg = 2)
+            else if(seg == 2)
                 return str_hour;
         }
         else if(char == "m")
         {
-            if(seg = 1)
+            if(seg == 1)
                 return this._Minute.toString();
-            else if(seg = 2)
+            else if(seg == 2)
                 return str_minute;
         }
         else if(char == "s")
         {
-            if(seg = 1)
+            if(seg == 1)
                 return this._Second.toString();
-            else if(seg = 2)
+            else if(seg == 2)
                 return str_second;
         }
     }
@@ -161,16 +161,20 @@ class DateTime {
 
         let seperator = "/";
         let ret = "";
-        let formatgroups = format.split(seperator);
-
+        let formatgroups = format.split(/[/.:-]+/);
+        
+        let seperatorIndex = 0;
         for(let i = 0;i<formatgroups.length;i++)
         {
-            if(i>0)
-            ret += seperator;
-            
-            ret += this.format(formatgroups[i][0],i);
-        }
+            if(i>0) {
+                ret += seperator;
+            }
+            seperator = format.charAt(seperatorIndex + formatgroups[i].length);
+            seperatorIndex += formatgroups[i].length+1;
 
+            ret += this.format(formatgroups[i][0], formatgroups[i].length);
+        }
+        
         return ret;
     }
     
